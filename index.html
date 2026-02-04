@@ -1,1 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AGROPATH Market - Fresh from Farm</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
 
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="bg-green-600 p-2 rounded-lg">
+                    <i data-lucide="shopping-basket" class="text-white w-5 h-5 md:w-6 md:h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-2xl font-bold text-gray-900 tracking-tight leading-none">AGROPATH</h1>
+                    <span class="text-[10px] md:text-xs font-bold text-green-600 uppercase tracking-widest">Marketplace</span>
+                </div>
+            </div>
+
+            <!-- Search Bar (Desktop) -->
+            <div class="hidden md:flex flex-1 max-w-lg mx-8 relative">
+                <input type="text" placeholder="Search for tomatoes, rice, farmers..." class="w-full pl-10 pr-4 py-2.5 bg-gray-100 border border-transparent focus:bg-white focus:border-green-500 rounded-full outline-none transition-all">
+                <i data-lucide="search" class="absolute left-3.5 top-3 text-gray-400 w-5 h-5"></i>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-6">
+                <button class="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-full">
+                    <i data-lucide="search" class="w-6 h-6"></i>
+                </button>
+                <div class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                    <div class="relative">
+                        <i data-lucide="shopping-cart" class="w-6 h-6 text-gray-700"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-green-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full opacity-0 transition-opacity">0</span>
+                    </div>
+                    <span class="hidden md:block font-medium text-sm">Cart</span>
+                </div>
+                <button class="bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-gray-800 transition-colors hidden md:block">Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-green-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-green-900 via-green-900/80 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="max-w-2xl">
+                <span class="inline-block px-3 py-1 bg-green-500/20 border border-green-400/30 rounded-full text-green-300 text-xs font-bold mb-4 uppercase tracking-wider">Direct from Farmers</span>
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Fresh Harvests,<br>Fair Prices.</h2>
+                <p class="text-green-100 text-lg md:text-xl mb-8 max-w-lg">Support local Agropath farmers by buying fresh produce directly. Pre-order crops while they grow!</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-green-500 text-white px-8 py-3.5 rounded-full font-bold hover:bg-green-400 transition-colors shadow-lg shadow-green-500/20">Shop Fresh</button>
+                    <button class="bg-white text-green-900 px-8 py-3.5 rounded-full font-bold hover:bg-gray-100 transition-colors">Pre-order Crops</button>
+                </div>
+            </div>
+            
+            <!-- Trust Badge -->
+            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 transform rotate-3 hidden md:block">
+                <div class="flex items-center gap-4 mb-3">
+                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg">Verified Farmers</p>
+                        <p class="text-xs text-green-200">Quality Checked by Agropath</p>
+                    </div>
+                </div>
+                <div class="flex -space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 border-2 border-green-900"></div>
+                    <div class="w-8 h-8 rounded-full bg-gray-400 border-2 border-green-900"></div>
+                    <div class="w-8 h-8 rounded-full bg-gray-500 border-2 border-green-900"></div>
+                    <div class="w-8 h-8 rounded-full bg-green-500 border-2 border-green-900 flex items-center justify-center text-[10px] font-bold">+2k</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <nav class="sticky top-16 md:top-20 z-40 bg-white border-b border-gray-100 py-4 overflow-x-auto no-scrollbar shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 flex gap-3 md:gap-4">
+            <button onclick="filterProducts('all')" class="cat-btn active px-5 py-2 rounded-full text-sm font-bold bg-gray-900 text-white transition-all whitespace-nowrap">All Produce</button>
+            <button onclick="filterProducts('vegetable')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all whitespace-nowrap">Vegetables</button>
+            <button onclick="filterProducts('fruit')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all whitespace-nowrap">Fruits</button>
+            <button onclick="filterProducts('grain')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all whitespace-nowrap">Grains & Rice</button>
+            <button onclick="filterProducts('preorder')" class="cat-btn px-5 py-2 rounded-full text-sm font-bold bg-orange-100 text-orange-700 hover:bg-orange-200 transition-all whitespace-nowrap flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3"></i> Pre-orders</button>
+        </div>
+    </nav>
+
+    <!-- Products Grid -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 md:px-8 py-8 w-full">
+        
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold text-gray-900">Featured Listings</h3>
+            <div class="flex items-center gap-2 text-sm text-gray-500">
+                <span>Sort by:</span>
+                <select class="bg-transparent font-bold text-gray-900 outline-none cursor-pointer">
+                    <option>Freshness</option>
+                    <option>Price: Low to High</option>
+                    <option>Distance</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product Cards injected by JS -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-8 py-12 grid md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="bg-green-600 p-1.5 rounded-lg">
+                        <i data-lucide="shopping-basket" class="text-white w-5 h-5"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900">AGROPATH Market</h2>
+                </div>
+                <p class="text-gray-500 text-sm max-w-xs">Empowering farmers by cutting out the middleman. Fresh food, fair prices, transparent origin.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-900 mb-4">Categories</h4>
+                <ul class="space-y-2 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-green-600">Fresh Vegetables</a></li>
+                    <li><a href="#" class="hover:text-green-600">Seasonal Fruits</a></li>
+                    <li><a href="#" class="hover:text-green-600">Organic Grains</a></li>
+                    <li><a href="#" class="hover:text-green-600">Farmer Pre-orders</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-900 mb-4">For Farmers</h4>
+                <ul class="space-y-2 text-sm text-gray-500">
+                    <li><a href="#" class="hover:text-green-600">Download Agropath App</a></li>
+                    <li><a href="#" class="hover:text-green-600">Start Selling</a></li>
+                    <li><a href="#" class="hover:text-green-600">Seller Guidelines</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-100 py-6 text-center text-sm text-gray-400">
+            &copy; 2024 Agropath Market. Built for the Hackathon.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        lucide.createIcons();
+
+        // Sample Data connecting to Agropath Farmers
+        const products = [
+            {
+                id: 1,
+                name: "Fresh Organic Tomatoes",
+                farmer: "Ravi's Farm",
+                location: "Palakkad",
+                price: 45,
+                unit: "kg",
+                image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&q=80&w=400&h=300",
+                category: "vegetable",
+                status: "available", // Available now
+                rating: 4.8
+            },
+            {
+                id: 2,
+                name: "Premium Basmati Rice",
+                farmer: "Green Fields Co-op",
+                location: "Wayanad",
+                price: 120,
+                unit: "kg",
+                image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=400&h=300",
+                category: "grain",
+                status: "preorder", // Future harvest
+                harvestDate: "15 Oct",
+                rating: 5.0
+            },
+            {
+                id: 3,
+                name: "Red Spinach (Cheera)",
+                farmer: "Lakshmi Agro",
+                location: "Thrissur",
+                price: 25,
+                unit: "bunch",
+                image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&q=80&w=400&h=300",
+                category: "vegetable",
+                status: "available",
+                rating: 4.5
+            },
+            {
+                id: 4,
+                name: "Robusta Bananas",
+                farmer: "Kerala Fruit Farm",
+                location: "Idukki",
+                price: 60,
+                unit: "kg",
+                image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?auto=format&fit=crop&q=80&w=400&h=300",
+                category: "fruit",
+                status: "available",
+                rating: 4.7
+            },
+            {
+                id: 5,
+                name: "Alphonso Mangoes",
+                farmer: "Ratnagiri Orchards",
+                location: "Pre-book",
+                price: 800,
+                unit: "dozen",
+                image: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=400&h=300",
+                category: "fruit",
+                status: "preorder",
+                harvestDate: "10 Apr",
+                rating: 4.9
+            },
+            {
+                id: 6,
+                name: "Fresh Carrots",
+                farmer: "High Range Farms",
+                location: "Munnar",
+                price: 55,
+                unit: "kg",
+                image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&q=80&w=400&h=300",
+                category: "vegetable",
+                status: "available",
+                rating: 4.6
+            }
+        ];
+
+        let cartCount = 0;
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            const filtered = products.filter(p => {
+                if (filter === 'all') return true;
+                if (filter === 'preorder') return p.status === 'preorder';
+                return p.category === filter;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-20 text-gray-400">No products found in this category.</div>`;
+                return;
+            }
+
+            filtered.forEach((p, index) => {
+                const isPreorder = p.status === 'preorder';
+                const badgeClass = isPreorder ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700';
+                const badgeText = isPreorder ? `Harvest: ${p.harvestDate}` : 'In Stock';
+                const btnText = isPreorder ? 'Pre-book Now' : 'Add to Cart';
+                const btnClass = isPreorder 
+                    ? 'bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50' 
+                    : 'bg-green-600 text-white hover:bg-green-700 shadow-lg shadow-green-600/20 border-2 border-transparent';
+
+                const html = `
+                <div class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col fade-in" style="animation-delay: ${index * 100}ms">
+                    <!-- Image -->
+                    <div class="h-48 overflow-hidden relative bg-gray-100">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-3 left-3 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wide ${badgeClass} shadow-sm backdrop-blur-md bg-opacity-90">
+                            ${badgeText}
+                        </div>
+                        <button class="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-gray-400 hover:text-red-500 transition-colors shadow-sm opacity-0 group-hover:opacity-100">
+                            <i data-lucide="heart" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg leading-tight mb-1">${p.name}</h3>
+                                <div class="flex items-center gap-1.5 text-xs text-gray-500">
+                                    <i data-lucide="tractor" class="w-3 h-3"></i>
+                                    <span>${p.farmer}</span>
+                                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                    <span>${p.location}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1 bg-yellow-50 px-1.5 py-0.5 rounded text-xs font-bold text-yellow-700 border border-yellow-100">
+                                <i data-lucide="star" class="w-3 h-3 fill-yellow-500 text-yellow-500"></i> ${p.rating}
+                            </div>
+                        </div>
+
+                        <div class="mt-auto pt-4 flex items-center justify-between gap-3">
+                            <div>
+                                <span class="block text-xs text-gray-400 font-medium uppercase">Price</span>
+                                <span class="text-xl font-bold text-gray-900">₹${p.price}<span class="text-sm text-gray-400 font-normal">/${p.unit}</span></span>
+                            </div>
+                            <button onclick="addToCart(this)" class="flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all active:scale-95 ${btnClass} flex items-center justify-center gap-2">
+                                <i data-lucide="${isPreorder ? 'calendar-clock' : 'shopping-bag'}" class="w-4 h-4"></i>
+                                ${btnText}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+                grid.innerHTML += html;
+            });
+            lucide.createIcons();
+        }
+
+        function filterProducts(category) {
+            // Update Buttons
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-5 py-2 rounded-full text-sm font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition-all whitespace-nowrap";
+                if(category === 'preorder' && btn.innerText.includes('Pre-orders')) {
+                     btn.className = "cat-btn active px-5 py-2 rounded-full text-sm font-bold bg-orange-500 text-white shadow-lg shadow-orange-500/30 transition-all whitespace-nowrap flex items-center gap-2";
+                } else if(btn.innerText.toLowerCase().includes(category) || (category === 'all' && btn.innerText.includes('All'))) {
+                    btn.className = "cat-btn active px-5 py-2 rounded-full text-sm font-bold bg-gray-900 text-white shadow-lg shadow-gray-900/20 transition-all whitespace-nowrap";
+                }
+            });
+            renderProducts(category);
+        }
+
+        function addToCart(btn) {
+            cartCount++;
+            const badge = document.getElementById('cart-badge');
+            badge.innerText = cartCount;
+            badge.classList.remove('opacity-0');
+            badge.classList.add('animate-bounce');
+            setTimeout(() => badge.classList.remove('animate-bounce'), 1000);
+
+            // Button Feedback
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> Added`;
+            btn.classList.add('bg-gray-800', 'text-white', 'border-gray-800');
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-gray-800', 'text-white', 'border-gray-800');
+            }, 1500);
+        }
+
+        // Initialize
+        renderProducts();
+
+    </script>
+</body>
+</html>
